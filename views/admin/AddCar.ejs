@@ -1,0 +1,251 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+    <style>
+        h2 {
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .form-group>label {
+            color: white;
+        }
+    </style>
+    <title>Admin Add Vehicle</title>
+</head>
+
+<body style="background-color: black;color: white;">
+
+    <% if (typeof response !=="undefined" ) { %>
+        <h1 style="text-align: center;color: rgb(49, 236, 49);">
+            <%= response.success ?response.success:"" %>
+        </h1>
+        <% } %>
+            <div class="container">
+
+                <form class="well form-horizontal" method="post" id="contact_form" enctype="multipart/form-data">
+                    <fieldset>
+                        <!-- Form Name -->
+                        <legend>
+                            <center>
+                                <h2><b>Add Vehicle</b></h2>
+                            </center>
+                        </legend><br>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Brand</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="brand" placeholder="Brand" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Name</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="name" placeholder="Name" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <!-- Date input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Year</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="year" placeholder="Year" class="form-control" type="date">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Date input-->
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Model</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="model" placeholder="Model" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Category</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <select name="category">
+                                    <option value="Hatchback">Hatchback</option>
+                                    <option value="Sedan">Sedan</option>
+                                    <option value="SUV">SUV</option>
+                                    <option value="MUV">MUV</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Gear Type</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <select name="gearType">
+                                    <option value="manual">Manual</option>
+                                    <option value="automatic">Automatic</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Energy type input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Fuel Type</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <select name="type">
+                                    <option value="petrol">Petrol</option>
+                                    <option value="diesel">Diesel</option>
+                                    <option value="electric">Electric</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Energy type input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Speedometer</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <select name="Speedometer">
+                                    <option value="Digital">Digital</option>
+                                    <option value="analog">analog</option>
+                                    <option value="semi-digital">semi-digital</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Mileage</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="mileage" placeholder="Mileage" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Location</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="location" placeholder="Location" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Location Map Link</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="locationInMap" placeholder="Location Map Link" class="form-control"
+                                        type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">price</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="price" placeholder="price" class="form-control" type="number">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">EngineType</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="engineType" placeholder="EngineType" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">No Of Cylinders</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="noOfCylinders" placeholder="No Of Cylinders" class="form-control"
+                                        type="number">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Displacement</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="Displacement" placeholder="Displacement" class="form-control"
+                                        type="number">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">FuelCapacity</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="FuelCapacity" placeholder="FuelCapacity" class="form-control"
+                                        type="number">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- image input -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Car Image</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input placeholder="Profile Image" name="vehicle" class="form-control" type="file">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label"></label>
+                            <div class="col-md-4"><br>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button
+                                    type="submit" class="btn btn-warning">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAdd
+                                    <span
+                                        class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+                <button class="btn btn-primary">
+                    <a href="/dashboard" class="nav-item nav-link">Dashboard</a>
+                </button>
+            </div>
+            </div><!-- /.container -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+                crossorigin="anonymous">
+                </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rento</title>
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+
+<body>
+    <%# Header Section %>
+        <%- include('Search') %>
+            <!--Section: Content-->
+            <section class="text-center">
+                <div class="row">
+                    <% if (typeof vehicleBooking !=="undefined" ) { %>
+                        <% for( let i of vehicleBooking ) { %>
+                            <div class="col-lg-4 col-md-6 mb-4 mt-3">
+                                <div class="card">
+                                    <div class="bg-image hover-overlay ripple"
+                                        style="width: fit-content;height: fit-content;" data-mdb-ripple-color="light">
+                                        <img src="/upload/vehicle/<%= i.image %>" class="img-fluid" />
+                                        <a href="#!">
+                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><span>
+                                                <%= i.brand %>
+                                            </span>
+                                            <%= i.name %>
+                                        </h5>
+                                        <p class="card-text">
+                                            Code: <%= i.code %> <br>
+                                                Price: <%= i.price %> <br>
+                                                    Date: <%= i.Date %> <br>
+                                                        location: <%= i.location %> <br>
+                                                            totalAmmount: <%= i.totalAmmount %>
+                                        </p>
+                                        <p class="card-text"><small class="text-muted">
+                                                <%= i.id %>
+                                            </small>
+                                        </p>
+                                        <% if (i.status==="booked" ) { %>
+                                            <div class="alert alert-light" role="alert">
+                                                Car Booked
+                                            </div>
+                                            <%} else if (i.status==="cancle" ) { %>
+                                                <div class="alert alert-danger" role="alert">
+                                                    Car Booking is Cancle
+                                                </div>
+                                                <% } else { %>
+                                                    <div class="alert alert-success" role="alert">
+                                                        Car Returned
+                                                    </div>
+                                                    <% } %>
+                                                        <a href="/booking/<%= i.id %>" class="btn btn-success">Booking
+                                                            Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                                <% } %>
+                </div>
+            </section>
+            <script src="/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

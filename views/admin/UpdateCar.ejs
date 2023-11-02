@@ -1,0 +1,338 @@
+<html lang="en">
+
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>rento</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="/css/responsive.css">
+    <!-- fevicon -->
+    <link rel="icon" href="/images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+        media="screen">
+</head>
+
+<body>
+    <!-- header -->
+    <header>
+        <!-- header inner -->
+        <div class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                        <div class="full">
+                            <div class="center-desk">
+                                <div class="logo">
+                                    <a href="/"><img src="/images/logo.png" alt="#" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                        <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarsExample04">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/"> Home </a>
+                                    </li>
+                                    <% if (typeof token !=="undefined" ) { %>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/booked/list">Bookings</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/logout">Logout</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/profile">Profile</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/dashboard">Dashboard</a>
+                                        </li>
+
+                                </ul>
+                                <% } else { %>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/login">Login</a>
+                                    </li>
+                                    </ul>
+                                    <div class="sign_btn"><a href="/singup">Sign in</a></div>
+                                    <% } %>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- end header inner -->
+    <div class="container">
+        <% if (typeof vehicle !=="undefined" ) { %>
+            <form class="well form-horizontal" method="post" id="contact_form" enctype="multipart/form-data">
+                <fieldset>
+                    <!-- Form Name -->
+                    <legend>
+                        <center>
+                            <h2><b>Update Details</b></h2>
+                        </center>
+                    </legend><br>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Brand</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input name="brand" placeholder="Brand" class="form-control"
+                                    value="<%= vehicle.brand %>" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Name</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input name="name" placeholder="Name" value="<%= vehicle.name %>" class="form-control"
+                                    type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <!-- Date input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Year</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input name="year" placeholder="Year" value="<%= vehicle.year %>" class="form-control"
+                                    type="date">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Date input-->
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Model</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input name="model" placeholder="Model" value="<%= vehicle.model %>"
+                                    class="form-control" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Category</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <select name="category">
+                                <option value="<%= vehicle.category %>">
+                                    <%=vehicle.category %>
+                                </option>
+                                <option value="Hatchback">Hatchback</option>
+                                <option value="Sedan">Sedan</option>
+                                <option value="SUV">SUV</option>
+                                <option value="MUV">MUV</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Gear Type</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <select name="gearType">
+                                <option value="<%= vehicle.gearType %>">
+                                    <%=vehicle.gearType %>
+                                </option>
+                                <option value="manual">Manual</option>
+                                <option value="automatic">Automatic</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Energy type input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Fuel Type</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <select name="type">
+                                <option value="<%= vehicle.type %>">
+                                    <%=vehicle.type %>
+                                </option>
+                                <option value="petrol">Petrol</option>
+                                <option value="diesel">Diesel</option>
+                                <option value="electric">Electric</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Energy type input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Speedometer</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <select name="Speedometer">
+                                <option value="<%= booking.Speedometer %>">
+                                    <%=booking.Speedometer %>
+                                </option>
+                                <option value="Digital">Digital</option>
+                                <option value="analog">analog</option>
+                                <option value="semi-digital">semi-digital</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Mileage</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input name="mileage" placeholder="Mileage" value="<%= booking.mileage %>"
+                                    class="form-control" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Location</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input name="location" placeholder="Location" value="<%= vehicle.location %>"
+                                    class="form-control" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Location Map Link</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input name="locationInMap" value="<%= vehicle.locationInMap %>"
+                                    placeholder="Location Map Link" class="form-control" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">price</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input name="price" placeholder="price" value="<%= vehicle.price %>"
+                                    class="form-control" type="number">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">EngineType</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input name="engineType" value="<%= booking.engineType %>" placeholder="EngineType"
+                                    class="form-control" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">No Of Cylinders</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input name="noOfCylinders" value="<%= booking.noOfCylinders %>"
+                                    placeholder="No Of Cylinders" class="form-control" type="number">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Displacement</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input name="Displacement" value="<%= booking.Displacement %>"
+                                    placeholder="Displacement" class="form-control" type="number">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">FuelCapacity</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input name="FuelCapacity" value="<%= booking.FuelCapacity %>"
+                                    placeholder="FuelCapacity" class="form-control" type="number">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- image input -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Car Image</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input placeholder="Profile Image" name="vehicle" class="form-control" type="file">
+                            </div>
+                        </div>
+                    </div>`
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label"></label>
+                        <div class="col-md-4"><br>
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit"
+                                class="btn btn-warning">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAdd
+                                <span
+                                    class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+    </div>
+
+    <% } %>
+
+        </div><!-- /.container -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+            </script>
+        <!-- Javascript files-->
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/popper.min.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/jquery-3.0.0.min.js"></script>
+        <script src="/js/plugin.js"></script>
+        <!-- sidebar -->
+        <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="/js/custom.js"></script>
+        <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+</body>
+
+</html>

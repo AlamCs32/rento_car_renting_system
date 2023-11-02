@@ -1,0 +1,20 @@
+for uuid first create the table without id in schema and then write id in schema with type UUID4V then use this commands 
+
+Commands:-
+1) npx sequelize-cli migration:generate --name= 'coloumn name here'
+2) npx sequelize-cli db:migrate
+
+
+change in migration file 
+
+async up(queryInterface, Sequelize) {
+    await queryInterface.changeColumn('user', 'id', {
+      type: Sequelize.UUID
+    })
+},
+async down(queryInterface, Sequelize) {
+    await queryInterface.changeColumn('user', 'id', {
+      type: Sequelize.INTEGER,
+      autoIncrement: true
+    })
+}

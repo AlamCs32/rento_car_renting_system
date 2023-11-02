@@ -1,0 +1,80 @@
+<!-- Recent Sales Start -->
+<div class="container-fluid pt-4 px-4" style="color: white;">
+    <div class=" text-center rounded p-4" style="background-color: #191C24;">
+        <form action="" method="get">
+            <div class="col-md-12">
+                <input class="contactus" placeholder="Search Code "
+                    style="border-radius: 8px;background-color: #191C24;" type="Search" name="code">
+            </div>
+        </form>
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">All Booking</h6>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr class="text-white">
+                        <th scope="col">ID</th>
+                        <th scope="col">User ID</th>
+                        <th scope="col">Vehicle ID</th>
+                        <th scope="col">Code</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Total/Price</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Details</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (typeof vehicleBooking !=="undefined" ) { %>
+                        <% for( let i of vehicleBooking ) { %>
+                            <tr>
+                                <td>
+                                    <%= i.id%>
+                                </td>
+                                <td>
+                                    <%= i.vehicleId%>
+                                </td>
+                                <td>
+                                    <%= i.userId%>
+                                </td>
+                                <td>
+                                    <%= i.code%>
+                                </td>
+                                <td>
+                                    <%= i.Date%>
+                                </td>
+                                <td>
+                                    <%= i.price%>
+                                </td>
+                                <td>
+                                    <%= i.totalAmmount%>
+                                </td>
+                                <td>
+                                    <%= i.status%>
+                                </td>
+                                <td><a class="btn btn-sm btn-primary" href="/booking/<%= i.id %>">Detail</a></td>
+                                <td>
+                                    <form action="/book/approve/<%= i.id %>" method="post">
+                                        <div class="col-md-12 ">
+                                            <select name="status">
+                                                <option value="booked">booked</option>
+                                                <option value="cancle">Cancle</option>
+                                                <option value="return">Return</option>
+                                            </select>
+                                        </div>
+                                        <button class="btn btn-sm btn-primary"
+                                            style="background-color: rgb(230, 26, 26); color:white;" type="submit">
+                                            Submit
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <% } %>
+                                <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

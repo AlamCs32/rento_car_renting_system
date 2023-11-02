@@ -1,0 +1,181 @@
+<html lang="en">
+
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>rento</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="/css/responsive.css">
+    <!-- fevicon -->
+    <link rel="icon" href="/images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+        media="screen">
+</head>
+
+<body>
+    <!-- header -->
+    <header>
+        <!-- header inner -->
+        <div class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                        <div class="full">
+                            <div class="center-desk">
+                                <div class="logo">
+                                    <a href="/"><img src="/images/logo.png" alt="#" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                        <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarsExample04">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/"> Home </a>
+                                    </li>
+                                    <% if (typeof token !=="undefined" ) { %>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/booked/list">Bookings</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/logout">Logout</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/profile">Profile</a>
+                                        </li>
+                                        <% if (typeof admin !=="undefined" && admin===true) { %>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="/dashboard">Dashboard</a>
+                                            </li>
+                                            <% } %>
+
+                                </ul>
+                                <% } else { %>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/login">Login</a>
+                                    </li>
+                                    </ul>
+                                    <div class="sign_btn"><a href="/singup">Sign in</a></div>
+                                    <% } %>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- end header inner -->
+    <h1 style="text-align: center;font-family: 'Courier New', Courier, monospace;">Profile</h1>
+    <% if (typeof response !=="undefined" ) { %>
+
+        <h3>
+            <%= response.Error ? response.Error:"" %>
+                <%= response.message ? response.message:"" %>
+        </h3>
+
+        <% } %>
+            <div class="form-wrapper" style="width: 40%;margin: auto;">
+                <!-- Profile Image -->
+                <% if (user.userImage) { %>
+                    <img src="/upload/user/<%= user.userImage %>" style="width: 100%; height: 300px;" alt="">
+                    <% } else { %>
+                        <img src="/images/profile-icon-9.png" style="width: 100%; height: 300px;" alt="">
+                        <% } %>
+                            <!-- Image Update Form -->
+                            <form method="post" action="/user/images/<%= user.id %>?_method=PUT"
+                                enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="userImage">Profile Image</label>
+                                    <input type="file" class="form-control" id="userImage" name="user"
+                                        placeholder="Select User Image">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update Image</button>
+                            </form>
+
+            </div>
+
+            <div class="form-wrapper" style="width: 40%;margin: auto;">
+                <!-- Profile Delete Section -->
+                <form action="/user/image/<%= user.id %>?_method=DELETE" method="post">
+                    <button type="submit" class="btn btn-danger">Delete Image</button>
+                </form>
+            </div>
+
+            <div class="form-wrapper" style="width: 40%;margin: auto;">
+
+                <!-- Profile Details Section -->
+                <hr>
+                <h2 style="text-align: center;font-family: 'Courier New', Courier, monospace;">User Details
+                </h2>
+
+                <form method="post" action="/profile/<%= user.id %>?_method=PUT">
+
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username"
+                            value="<%= user.username %>" placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" disabled value="<%= user.email %>"
+                            placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="text" class="form-control" id="phone" disabled value="<%= user.phone %>"
+                            placeholder="Enter phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <input type="text" class="form-control" id="state" name="state" value="<%= user.state %>"
+                            placeholder="Enter state">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" id="city" name="city" value="<%= user.city %>"
+                            placeholder="Enter city">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" id="address" name="address" value="<%= user.address %>"
+                            placeholder="Enter address">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+            <!-- Javascript files-->
+            <script src="/js/jquery.min.js"></script>
+            <script src="/js/popper.min.js"></script>
+            <script src="/js/bootstrap.bundle.min.js"></script>
+            <script src="/js/jquery-3.0.0.min.js"></script>
+            <script src="/js/plugin.js"></script>
+            <!-- sidebar -->
+            <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+            <script src="/js/custom.js"></script>
+            <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+</body>
+
+</html>

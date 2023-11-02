@@ -1,0 +1,47 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/ChangePassword.css">
+    <link rel="shortcut icon" href="#">
+
+    <title>Forget Email</title>
+</head>
+
+<body style="background-color: #000;">
+    <div class="mainDiv" style="margin-top: 2%;background-color: #000;">
+        <div class="cardStyle" style="background-color: #191C24;color: white;">
+            <form action="" method="post" name="signupForm" id="signupForm">
+
+                <img src="" id="signupLogo" />
+
+                <h2 class="formTitle" style="color: white;">
+                    Enter Email
+                </h2>
+
+                <h4 id="Success" style="text-align: center; color: rgb(19, 241, 19);">
+                    <%= typeof response.Success !=="undefined" ? response.Success:"" %>
+                </h4>
+                <h4 id="Success" style="text-align: center; color: rgb(241, 19, 19);">
+                    <%= typeof response.Error !=="undefined" ? response.Error:"" %>
+                </h4>
+
+                <div class="inputDiv">
+                    <label class="inputLabel" for="email" style="color: white;">Email</label>
+                    <input type="email" id="password" name="email" placeholder="Email Address" required>
+                </div>
+                <div class="buttonWrapper">
+                    <button type="submit" id="submitButton" style="background-color: #EB1616;color: white;"
+                        class="submitButton pure-button pure-button-primary">
+                        <span>Continue</span>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
